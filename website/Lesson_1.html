@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1</title>
+</head>
+<body>
+  
+    <h1>Let it Blink: Blinking the Onboard LED</h1>
+    
+    <img src="../images/Blink.gif" alt="Blinking image">
+     
+    
+
+    <p>
+        The LED blinking program is one of the first projects used to learn
+        MicroPython on the Raspberry Pi Pico. It introduces how to control
+        hardware, use loops, and create delays.
+    </p>
+
+    <p>
+        The Raspberry Pi Pico controls electronic components through its
+        <strong>GPIO (General Purpose Input/Output)</strong> pins. To turn an
+        LED on and off, the pin must be configured as an
+        <strong>output</strong>, because the Pico sends signals to the LED.
+    </p>
+
+    <p>The program imports two modules:</p>
+
+    <ul>
+        <li><strong>Pin</strong> from the <code>machine</code> module to control the LED.</li>
+        <li><strong>sleep</strong> from the <code>time</code> module to create delays.</li>
+    </ul>
+
+
+<!--using pre and code elements give this structure give the particular code font and format-->
+    <pre><code>from machine import Pin
+from time import sleep</code></pre>
+
+    <p>
+        An object named <strong>myled</strong> is created to represent the
+        onboard LED.
+    </p>
+
+    <pre><code>myled = Pin("LED", Pin.OUT)</code></pre>
+
+    <ul>
+        <li><code>"LED"</code> refers to the Pico's built-in LED.</li>
+        <li><code>Pin.OUT</code> sets the pin as an output.</li>
+        <li> <strong>NOTE:</strong> pin is configured as output because the Raspberry Pi Pico is sending a signal to the LED.</li>
+    </ul>
+
+    <p>
+        The program uses an infinite loop so the LED keeps blinking.
+    </p>
+
+    <pre><code>while True:</code></pre>
+
+    <p>Inside the loop:</p>
+
+    <ul>
+        <li><code>myled.value(0)</code> turns the LED <strong>off</strong>.</li>
+        <li><code>sleep(0.3)</code> waits for <strong>0.3 seconds</strong>.</li>
+        <li><code>myled.value(1)</code> turns the LED <strong>on</strong>.</li>
+        <li><code>sleep(0.3)</code> waits another <strong>0.3 seconds</strong>.</li>
+    </ul>
+
+    <p>
+        This sequence repeats continuously, making the LED blink.
+    </p>
+
+    <h3>Key Concepts</h3>
+
+    <ul>
+        <li><strong>GPIO:</strong> Pins used to control electronic components.</li>
+        <li><strong>Output:</strong> Sends signals from the Pico to a device.</li>
+        <li><strong>while True:</strong> Repeats the code forever.</li>
+        <li><strong>sleep():</strong> Pauses the program for a specified time.</li>
+        <li><strong>value(0):</strong> Turns the LED off.</li>
+        <li><strong>value(1):</strong> Turns the LED on.</li>
+    </ul>
+
+    
+</body>
+</html>
