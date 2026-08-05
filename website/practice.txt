@@ -1,0 +1,9 @@
+Task: Connect and Control an LED Using a Raspberry Pi Pico GPIO Pin
+
+Using a breadboard (protoboard), connect an LED to any available GPIO pin on the Raspberry Pi Pico.
+Include a current-limiting resistor in series with the LED to protect both the LED and the Pico GPIO pin. A resistor value between 220 Ω and 1 kΩ is recommended.
+Connect the circuit as follows:
+GPIO pin → resistor → LED anode (+ long leg)
+LED cathode (− short leg) → GND
+Write and upload a simple program that configures the selected GPIO pin as an output and turns the LED ON and OFF.
+Verify that the LED responds correctly when the program runs.

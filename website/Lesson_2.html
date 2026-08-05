@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Lesson_2.css">
+</head>
+<body>
+    
+    <h1>BreadBoard/Proto-board</h1>
+
+    <p><a href="./Projects_index.html">Return to INDEX</a></p>
+   
+    <p>
+    If you place a wire or component leg into one of these holes, it is electrically
+    connected to the other holes in the same vertical group.
+    </p>
+
+    <div><pre>
+    ● e
+    │
+    ● d
+    │
+    ● c
+    │
+    ● b
+    │
+    ● a
+    </pre>
+
+
+    
+    <img src="../images/Breadboard.gif" alt="connected row">
+    </div>
+   
+    <pre>TOP VIEW OF A BREADBOARD   
+   ==========================================
+ - | ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●|Negative ← → = the power rails are connected horizontally.
+ + | ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●|Positive ← → = the power rails are connected horizontally.
+   ==========================================
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●   ↓ ↓ ↓ ↓ ↓  
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● 
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●   ↓ ↓ ↓ ↓ ↓ RAILS ARE ONLY CONNECTED VERTICALLY
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●    
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●   ↓ ↓ ↓ ↓ ↓ 
+    ========================================= center    
+    ========================================= gutter 
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●   ↓ ↓ ↓ ↓ ↓ 
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● 
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●   ↓ ↓ ↓ ↓ ↓ RAILS ARE ONLY CONNECTED VERTICALLY
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● 
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●   ↓ ↓ ↓ ↓ ↓ 
+   ==========================================
+ + | ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●|Negative ← → = the power rails are connected horizontally.
+ - | ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●|Positive ← → = the power rails are connected horizontally.
+   ==========================================
+</pre>
+<h2>How a Breadboard Works</h2>
+
+<p>
+A breadboard (also called a <strong>protoboard</strong>) lets you build electronic
+circuits <strong>without soldering</strong>. You can simply push component legs
+and jumper wires into the holes to create connections.
+</p>
+
+<h3>The Power Rails</h3>
+
+<p>
+The <strong>+</strong> and <strong>-</strong> rails are connected
+<strong>horizontally</strong>. They are normally used to distribute electrical
+power across the breadboard.
+</p>
+
+<ul>
+    <li>
+        <strong>+</strong> (Positive) → connects to the positive side of your power supply.
+    </li>
+    <li>
+        <strong>-</strong> (Negative / Ground) → connects to the ground (0V) side of your power supply.
+    </li>
+</ul>
+
+
+<h3>The Terminal Area</h3>
+
+<p>
+The holes in the middle section of the breadboard are connected
+<strong>vertically</strong>, usually in groups of <strong>5 holes</strong>.
+</p>
+
+
+
+<p>
+The next column of holes is a separate connection and is not connected to the
+previous column.
+</p>
+
+
+<h3>The Center Gutter</h3>
+
+<p>
+The center gap (also called the <strong>gutter</strong>) separates the left side
+from the right side of the breadboard.
+</p>
+
+<p>
+There is <strong>no electrical connection</strong> across the gutter. This allows
+integrated circuits (IC chips) to be placed across the middle without connecting
+the pins on opposite sides together.
+</p>
+
+
+<h3>Easy Rules to Remember</h3>
+
+<ol>
+    <li>The <strong>+</strong> and <strong>-</strong> power rails connect horizontally.</li>
+    <li>The middle holes connect vertically in groups of 5.</li>
+    <li>The center gutter separates the left and right sides.</li>
+    <li>If two holes are not internally connected, you must connect them using a jumper wire.</li>
+</ol>
+
+<p><strong>the practice for Lesson 2: Connect and Control an LED Using a Raspberry Pi Pico GPIO Pin</strong> </p>\
+<img src="../images/Lesson_2_practice.png" height="500" width="500">
+
+
+</body>
+</html>
