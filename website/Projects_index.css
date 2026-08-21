@@ -1,0 +1,34 @@
+
+
+html{
+
+    box-sizing: border-box;
+    border: 3px solid black;
+}
+
+.lesson{
+     border: 3px solid red;
+     margin: 90px;
+     display: block;
+
+
+}
+
+.description{
+     padding-top: 55px;
+     border: 3px solid aqua;
+     margin: 40px;
+}
+
+
+.I,
+.II,
+.III{
+     box-sizing: border-box;
+     margin-left: 22px;
+     margin-right: 1616px;
+     margin-top: -52px;
+     
+      
+}
+
