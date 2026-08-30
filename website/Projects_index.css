@@ -7,7 +7,7 @@ html{
 }
 
 .lesson{
-     border: 3px solid red;
+     
      margin: 90px;
      display: block;
 
@@ -15,19 +15,29 @@ html{
 }
 
 .description{
-     padding-top: 55px;
+     padding-top: 69px;
      border: 3px solid aqua;
      margin: 40px;
+     padding-left: 22px;
+     padding-top: -66px;
+
+     
+     
 }
 
 
 .I,
 .II,
-.III{
-     box-sizing: border-box;
-     margin-left: 22px;
+.III,
+.four{
+     
+     padding-right: 53px;
+     padding-left: 9px;
+     border: 3px solid green;
+     margin-left: 1px;
      margin-right: 1616px;
-     margin-top: -52px;
+     margin-top: -74px;
+    
      
       
 }

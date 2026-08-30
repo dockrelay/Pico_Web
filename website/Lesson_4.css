@@ -1,0 +1,28 @@
+.inicio,
+.wiring{
+    border: 3px solid rgb(226, 226, 74);
+    background-color: rgb(10, 191, 118);
+    text-align: center;
+
+}
+
+.wiring{
+    box-sizing: border-box;
+    width: 1250px;
+    height: auto;
+    padding: 25px;
+    display: block;
+    margin: auto;
+    
+    
+}
+
+.rider{
+   
+    width: 346px;
+    height: 128px;
+    display: block;
+    margin: auto;
+   
+    
+}

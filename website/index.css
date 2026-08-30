@@ -1,0 +1,16 @@
+.hightlither
+{
+background-color: rgb(131, 240, 92);
+
+}
+
+.inicio,
+.final{
+
+        box-sizing: border-box;
+
+        background-color: rgb(10, 191, 118);
+        border: 3px solid rgb(226, 226, 74);
+        margin: 40px;
+        text-align: center;
+}
