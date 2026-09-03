@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Potentiometer</title>
+    <link rel="stylesheet" href="./Lesson_5.css">
+</head>
+<body>
+     <h1><a href="./Projects_index.html">Index</a></h1>   
+     <h2>The Potentiometer</h2>
+
+     <img class="potwire" src="../images/potentiometer.png" alt="potentiometer wiring">
+
+    <p>
+        A <strong>potentiometer</strong> (or "pot") is basically a knob
+        that lets you control a voltage or resistance.
+    </p>
+
+    <p>
+        Think of it like the volume knob on a speaker. Turning the knob
+        changes the value, and a microcontroller such as a Raspberry Pi Pico
+        can read that change.
+    </p>
+
+    <h3>How does it work?</h3>
+
+    <p>
+        A normal potentiometer has <strong>3 pins</strong>:
+    </p>
+
+    <ul>
+        <li><strong>Pin 1:</strong> One side of the resistance</li>
+        <li><strong>Pin 2:</strong> The middle pin (the wiper)</li>
+        <li><strong>Pin 3:</strong> The other side of the resistance</li>
+    </ul>
+
+    <p>
+        The middle pin is the important one when using a potentiometer
+        with a Raspberry Pi Pico. Its voltage changes as you turn the knob.
+    </p>
+
+    <h3>Connecting it to a Raspberry Pi Pico</h3>
+
+    <pre>
+Potentiometer          Raspberry Pi Pico
+
+   Pin 1  ────────────  3.3V
+
+   Pin 2  ────────────  GP28 (ADC0)
+
+   Pin 3  ────────────  GND
+    </pre>
+
+    <p>
+        The Pico measures the voltage coming from the middle pin.
+        As you turn the knob, that voltage changes from approximately
+        <strong>0V to 3.3V</strong>.
+    </p>
+
+    <h3>Very important: Don't use 5V</h3>
+
+    <p>
+        The Raspberry Pi Pico uses 3.3V logic. Do not connect a potentiometer
+        to 5V and then send that voltage directly into an ADC pin.
+        Use the Pico's <strong>3.3V</strong> pin instead.
+    </p>
+
+    <h3>What can you use it for?</h3>
+
+    <ul>
+        <li>Controlling LED brightness</li>
+        <li>Changing motor speed</li>
+        <li>Controlling a servo</li>
+        <li>Changing a setting in a program</li>
+        <li>Creating a simple control knob</li>
+    </ul>
+
+    <h3>The simple idea</h3>
+
+    <p>
+        You turn the knob → the voltage changes → the Pico reads the voltage
+        → your program decides what to do.
+    </p>
+
+<h1>How the Potentiometer Voltage Is Calculated</h1>                                                                                                                            
+                                                                                                                                                                                   
+   <h2>Worked example from the whiteboard</h2>                                                                                                                                     
+                                                                                                                                                                                   
+   <p>We have two measured points: (x, voltage) pairs</p>                                                                                                                          
+                                                                                                                                                                                   
+   <ul>                                                                                                                                                                            
+     <li>Point 1: (430, 0)</li>                                                                                                                                                    
+     <li>Point 2: (65536, 3.3)</li>                                                                                                                                                
+   </ul>                                                                                                                                                                           
+                                                                                                                                                                                   
+   <p>1. Find the slope:</p>                                                                                                                                                       
+                                                                                                                                                                                   
+   <p>m = (y2 - y1) / (x2 - x1) = (3.3 - 0) / (65536 - 430) = 3.3 / 65106</p>                                                                                                      
+                                                                                                                                                                                   
+   <p>2. Use the point-slope form, y - y1 = m(x - x1), with Point 1:</p>                                                                                                           
+                                                                                                                                                                                   
+   <p>y - 0 = (3.3 / 65106) * (x - 430)</p>                                                                                                                                        
+                                                                                                                                                                                   
+   <p>3. Solve for y:</p>                                                                                                                                                          
+                                                                                                                                                                                   
+   <p>y = (3.3 / 65106) * x - (430 * 3.3 / 65106)</p>                                                                                                                              
+                                                                                                                                                                                   
+   <p>4. Rename y to Voltage and x to PotVal:</p>                                                                                                                                  
+                                                                                                                                                                                   
+   <p>Voltage = (3.3 / 65106) * PotVal - (430 * 3.3 / 65106)</p>                                                                                                                   
+                                                                                                                                                                                   
+   <p>That is the final formula. Plug in any raw ADC reading and you get volts.</p>                                                                                                
+                                                                                                                                                                                   
+   <h2>Why this is needed</h2>                                                                                                                                                     
+                                                                                                                                                                                   
+   <p>The Pi Pico's ADC does not output volts. It outputs a digital count.                                                                                                         
+   On this setup the raw reading runs from 430 (pot at 0 volts) up to 65536                                                                                                        
+   (pot at 3.3 volts). To turn a raw count into real volts we fit a straight                                                                                                       
+   line through two known reference points.</p>                                                                                                                                    
+                                                                                                                                                                                   
+   <h2>The two calibration points</h2>                                                                                                                                             
+                                                                                                                                                                                   
+   <p>Each point is a pair: (ADC reading, real voltage)</p>                                                                                                                        
+                                                                                                                                                                                   
+   <ul>                                                                                                                                                                            
+     <li>Point 1: ADC = 430, Voltage = 0 V (pot fully low)</li>                                                                                                                    
+     <li>Point 2: ADC = 65536, Voltage = 3.3 V (pot fully high)</li>                                                                                                               
+   </ul>                                                                                                                                                                           
+                                                                                                                                                                                   
+   <h2>The slope, explained</h2>                                                                                                                                                   
+                                                                                                                                                                                   
+   <p>The slope tells us how many volts each ADC count is worth:</p>                                                                                                               
+                                                                                                                                                                                   
+   <p>m = (V2 - V1) / (x2 - x1) = 3.3 / 65106</p>                                                                                                                                  
+                                                                                                                                                                                   
+   <p>That is about 0.00005 volts per step. Every step of the raw reading is                                                                                                       
+   worth about 0.00005 volts.</p>                                                                                                                                                  
+                                                                                                                                                                                   
+   <h2>The final equation</h2>                                                                                                                                                     
+                                                                                                                                                                                   
+   <p>Voltage = (3.3 * PotVal - 430 * 3.3) / 65106</p>                                                                                                                             
+                                                                                                                                                                                   
+   <p>Use it in code like this:</p>                                                                                                                                                
+                                                                                                                                                                                   
+   <p>voltage = (3.3 * pot_val - (430 * 3.3)) / 65106</p>                                                                                                                          
+                                                                                                                                                                                   
+   <p>An equivalent compact form is: voltage = (3.3 / 65106) * (pot_val - 430)</p>                                                                                                 
+                                                                                                                                                                                   
+   <h2>General rule for recalibrating</h2>                                                                                                                                         
+                                                                                                                                                                                   
+   <p>If you re-measure the endpoints, the universal two-point formula is:</p>                                                                                                     
+                                                                                                                                                                                   
+   <p>Voltage = (V2 - V1) / (x2 - x1) * (PotVal - x1)</p>                                                                                                                          
+                                                                                                                                                                                   
+   <p>where (x1, V1) and (x2, V2) are your two measured reference points.                                                                                                          
+   This works because a potentiometer wired as a voltage divider produces a                                                                                                        
+   perfectly linear voltage, so one straight line is enough to map the range.</p>
+
+
+    
+</body>
+</html>
+
+
